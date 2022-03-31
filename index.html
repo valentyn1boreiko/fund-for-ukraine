@@ -28,7 +28,7 @@
                         href="https://twitter.com/valentynepii/status/1509528527107854353">Twitter</a> to have your
                       donations 100% matched!
                        <br>
-                       <br> Funds matched: <span id='spent'><span>/7500 EUR
+                       <br> Funds matched: <p id='spent'><p>/7500 EUR
                     </div>
                     <br>
                     <div class="bold border p2">
@@ -926,7 +926,7 @@
        */
       function appendPre(message) {
         var pre = document.getElementById('spent');
-        var textContent = document.createTextNode(message + '\n');
+        var textContent = document.createTextNode(message);
         pre.appendChild(textContent);
       }
 
