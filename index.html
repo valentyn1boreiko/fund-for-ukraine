@@ -28,7 +28,7 @@
                         href="https://twitter.com/valentynepii/status/1509528527107854353">Twitter</a> to have your
                       donations 100% matched!
                        <br>
-                       <br> Funds matched: <p id='spent'>50<p>/7500 EUR
+                       <br> Funds matched: <span id='spent'><span>/7500 EUR
                     </div>
                     <br>
                     <div class="bold border p2">
@@ -910,8 +910,6 @@
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
         }).then(function () {
-          appendPre('Hi');
-          handleAuthClick();
           listMajors();
         }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
@@ -919,12 +917,6 @@
       }
 
 
-      /**
-       *  Sign in the user upon button click.
-       */
-      function handleAuthClick(event) {
-        gapi.auth2.getAuthInstance().signIn();
-      }
 
       /**
        * Append a pre element to the body containing the given message
