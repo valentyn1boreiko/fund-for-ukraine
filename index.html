@@ -926,8 +926,7 @@
        */
       function appendPre(message) {
         var pre = document.getElementById('spent');
-        var textContent = document.createTextNode(message);
-        pre.appendChild(textContent);
+        pre.textContent = textContent;
       }
 
       /**
