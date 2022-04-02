@@ -28,7 +28,7 @@
                         href="https://twitter.com/ARomanNovak/status/1509681407513169926">Twitter</a> to have your
                       donations 100% matched!
                        <br>
-                       <br> Funds matched: <span id='spent'></span>/7500 EUR (<a href="receipts.html">matching receipts</a>)
+                       <br> Funds matched: <span id='spent'></span> (out of <span id='donated'></span> donated)/7500 EUR (<a href="receipts.html">matching receipts</a>)
                     </div>
                     <br>
                     <div class="bold border p2">
@@ -933,8 +933,8 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
-      function appendPre(message) {
-        var pre = document.getElementById('spent');
+      function appendPre(message, id) {
+        var pre = document.getElementById(id);
         pre.textContent = message;
       }
 
@@ -951,7 +951,25 @@
             if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              appendPre(row[0]);
+              appendPre(row[0], 'spent');
+            }
+          } else {
+            appendPre('No data found.');
+          }
+
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+          
+        gapi.client.sheets.spreadsheets.values.get({
+          spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
+          range: "'sheet1'H2",
+        }).then(function(response) {
+          var range = response.result;
+            if (range.values.length > 0) {
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              appendPre(row[0], 'donated');
             }
           } else {
             appendPre('No data found.');
