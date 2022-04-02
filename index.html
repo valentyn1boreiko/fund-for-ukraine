@@ -963,7 +963,7 @@
           
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
-          range: "'Donors'H2",
+          range: "'Donors'!H2",
         }).then(function(response) {
           var range = response.result;
             if (range.values.length > 0) {
