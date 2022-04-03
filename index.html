@@ -28,7 +28,7 @@
                         href="https://twitter.com/ARomanNovak/status/1509681407513169926">Twitter</a> to have your
                       donations 100% matched!
                        <br>
-                       <br> Funds matched: <span id='spent'></span> (out of <span id='donated'></span> donated)/7500 EUR (<a href="receipts.html">matching receipts</a>)
+                       <br> Funds matched: <span id='spent'></span> (out of <span id='donated'></span> donated)/<span id='original'></span> EUR (<a href="receipts.html">matching receipts</a>)
                     </div>
                     <br>
                     <div class="bold border p2">
@@ -919,6 +919,7 @@
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
 
+      var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B15", "original"]]
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -937,7 +938,9 @@
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
         }).then(function () {
-          listMajors();
+          Object.entries(tuples).map(([mes, id]) => (
+       listMajors(mes, id)
+      ))
         }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
         });
@@ -960,34 +963,16 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-      function listMajors() {
+      function listMajors(range, id) {
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
-          range: 'C15',
+          range: range,
         }).then(function(response) {
           var range = response.result;
             if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
               var row = range.values[i];
-              appendPre(row[0], 'spent');
-            }
-          } else {
-            appendPre('No data found.');
-          }
-
-        }, function(response) {
-          appendPre('Error: ' + response.result.error.message);
-        });
-
-        gapi.client.sheets.spreadsheets.values.get({
-          spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
-          range: "'Donors'!H2",
-        }).then(function(response) {
-          var range = response.result;
-            if (range.values.length > 0) {
-            for (i = 0; i < range.values.length; i++) {
-              var row = range.values[i];
-              appendPre(row[0], 'donated');
+              appendPre(row[0], id);
             }
           } else {
             appendPre('No data found.');
