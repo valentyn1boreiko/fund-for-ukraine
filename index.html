@@ -940,8 +940,8 @@
         }).then(function () {
            var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B15", "original"]];
 
-          Object.entries(tuples).map(([mes, id]) => (
-                 listMajors(mes, id)
+          Object.entries(tuples).map(([key, message]) => (
+                 listMajors(message[0], message[1])
       ))
         }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
