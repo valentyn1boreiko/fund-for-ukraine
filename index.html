@@ -941,7 +941,7 @@
            var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B15", "original"]];
 
           Object.entries(tuples).map(([mes, id]) => (
-       listMajors(mes, id)
+                 listMajors(mes, id)
       ))
         }, function(error) {
           appendPre(JSON.stringify(error, null, 2));
@@ -966,6 +966,7 @@
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
       function listMajors(range, id) {
+          console.log(range, id)
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
           range: range,
