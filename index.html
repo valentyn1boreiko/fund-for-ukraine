@@ -969,10 +969,12 @@
       function listMajors(range_, id) {
           console.log(range_, id)
           var range_ = range_;
-        gapi.client.sheets.spreadsheets.values.get({
+          var dict_arg = {
           spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
           range: range_,
-        }).then(function(response) {
+        };
+         console.log('dict arg', dict_arg)
+        gapi.client.sheets.spreadsheets.values.get(dict_arg).then(function(response) {
           var range = response.result;
             if (range.values.length > 0) {
             for (i = 0; i < range.values.length; i++) {
