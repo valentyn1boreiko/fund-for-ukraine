@@ -970,9 +970,8 @@
           console.log(range_, id)
           var range_ = range_;
           var dict_arg = {
-          spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
-          range: range_,
-        };
+          spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I'};
+          dict_arg['range'] = range_
          console.log('dict arg', dict_arg)
         gapi.client.sheets.spreadsheets.values.get(dict_arg).then(function(response) {
           var range = response.result;
