@@ -966,11 +966,11 @@
        * Print the names and majors of students in a sample spreadsheet:
        * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        */
-      function listMajors(range, id) {
-          console.log(range, id)
+      function listMajors(range_, id) {
+          console.log(range_, id)
         gapi.client.sheets.spreadsheets.values.get({
           spreadsheetId: '1x88XzAnOLVSo1uYkfuipX7P_UtyNuhJwTHYtY7UEq2I',
-          range: range,
+          range: range_,
         }).then(function(response) {
           var range = response.result;
             if (range.values.length > 0) {
