@@ -921,7 +921,7 @@
       var authorizeButton = document.getElementById('authorize_button');
       var signoutButton = document.getElementById('signout_button');
 
-      var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B15", "original"]];
+      var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B30", "original"]];
       /**
        *  On load, called to load the auth2 library and API client library.
        */
@@ -940,7 +940,7 @@
           discoveryDocs: DISCOVERY_DOCS,
           scope: SCOPES
         }).then(function () {
-           var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B15", "original"]];
+           var tuples = [["C15", "spent"], ["'Donors'!H2", "donated"], ["B30", "original"]];
 
           Object.entries(tuples).map(([key, message]) => (
                  listMajors(message[0], message[1])
