@@ -30,17 +30,6 @@
 <img src="receipts/30_eur_humanitarian.png">
 <img src="receipts/50_eur_armed.png">
 <img src="receipts/kolo_50_eur.png">
-<script type="text/javascript">
-  const fs = require("fs");
-  
-let directory_name = "/receipts";
-  
-// Function to get current filenames
-// in directory
-let filenames = fs.readdirSync(directory_name);
-  
-console.log("\nFilenames in directory:");
-filenames.forEach((file) => {
-    console.log("File:", file);
-});
-</script>
+{% loop_directory receipts:images iterator:image filter:*.jpg sort:descending %}
+   <img src="{{ image }}" />
+{% endloop_directory %}
