@@ -30,6 +30,6 @@
 <img src="receipts/30_eur_humanitarian.png">
 <img src="receipts/50_eur_armed.png">
 <img src="receipts/kolo_50_eur.png">
-{% loop_directory receipts:images iterator:image filter:*.jpg sort:descending %}
-   <img src="{{ image }}" />
+{% loop_directory receipts:images iterator:image filter:*.png sort:descending %}
+   <img src="receipts/{{ image }}" />
 {% endloop_directory %}
